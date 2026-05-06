@@ -3,48 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Asistan • Premium</title>
+    <title>SERRO-AI • Premium</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap');
-        
-        body {
-            font-family: 'Inter', system_ui, sans-serif;
-        }
-        
-        .chat-container {
-            scrollbar-width: thin;
-            scrollbar-color: #475569 #1e2937;
-        }
-        
-        .message {
-            max-width: 75%;
-            animation: fadeIn 0.2s ease-out;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .ai-bubble {
-            background: linear-gradient(145deg, #334155, #1e2937);
-            border: 1px solid #475569;
-        }
-        
-        .user-bubble {
-            background: linear-gradient(145deg, #3b82f6, #2563eb);
-        }
-        
-        .model-card {
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .model-card.active {
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-        }
+        body { font-family: 'Inter', system_ui, sans-serif; }
+        .chat-container { scrollbar-width: thin; scrollbar-color: #475569 #1e2937; }
+        .message { max-width: 78%; animation: fadeIn 0.2s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        .ai-bubble { background: linear-gradient(145deg, #334155, #1e2937); border: 1px solid #475569; }
+        .user-bubble { background: linear-gradient(145deg, #6366f1, #4f46e5); }
+        .model-card { transition: all 0.2s ease; }
+        .model-card.active { border-color: #6366f1; box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2); }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-200">
@@ -53,180 +23,134 @@
         <!-- Sidebar -->
         <div class="w-72 bg-slate-900 border-r border-slate-800 flex flex-col">
             
-            <!-- Header -->
             <div class="p-6 border-b border-slate-800">
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center">
+                    <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center">
                         <i class="fas fa-robot text-white text-2xl"></i>
                     </div>
                     <div>
-                        <h1 class="text-2xl font-bold tracking-tight">AI Asistan</h1>
-                        <p class="text-xs text-slate-500">Fireworks AI • 2026</p>
+                        <h1 class="text-2xl font-bold tracking-tight">SERRO-AI</h1>
+                        <p class="text-xs text-slate-500">Premium • Fireworks</p>
                     </div>
                 </div>
             </div>
 
             <!-- Model Seçimi -->
             <div class="p-4 flex-1 overflow-y-auto">
-                <div class="text-xs font-semibold text-slate-400 px-3 mb-3">MODEL SEÇ</div>
+                <div class="text-xs font-semibold text-slate-400 px-3 mb-3">MODELLER</div>
                 
-                <div onclick="selectModel('deepseek-v4-pro')" class="model-card active cursor-pointer bg-slate-800 hover:bg-slate-700 border border-blue-500 rounded-2xl p-4 mb-3" id="model-deepseek-v4-pro">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <div class="font-semibold">DeepSeek V4 Pro</div>
-                            <div class="text-xs text-emerald-400">En güçlü • Kodlama</div>
-                        </div>
-                        <i class="fas fa-check-circle text-blue-500"></i>
-                    </div>
-                </div>
-                
-                <div onclick="selectModel('glm-4p7')" class="model-card cursor-pointer bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-2xl p-4 mb-3" id="model-glm-4p7">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <div class="font-semibold">GLM 4.7</div>
-                            <div class="text-xs text-emerald-400">Dengeli • Reasoning</div>
-                        </div>
-                    </div>
+                <div onclick="selectModel('glm-4p7')" class="model-card active cursor-pointer bg-slate-800 hover:bg-slate-700 border border-indigo-500 rounded-2xl p-4 mb-3" id="model-glm-4p7">
+                    <div class="font-semibold">GLM 4.7</div>
+                    <div class="text-xs text-emerald-400">Dengeli • Güçlü</div>
                 </div>
                 
                 <div onclick="selectModel('qwen3-235b')" class="model-card cursor-pointer bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-2xl p-4 mb-3" id="model-qwen3-235b">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <div class="font-semibold">Qwen3 235B</div>
-                            <div class="text-xs text-emerald-400">Hızlı • Yaratıcı</div>
-                        </div>
-                    </div>
+                    <div class="font-semibold">Qwen3 235B</div>
+                    <div class="text-xs text-emerald-400">Hızlı • Yaratıcı</div>
+                </div>
+                
+                <div onclick="selectModel('kimi-k2-6')" class="model-card cursor-pointer bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-2xl p-4 mb-3" id="model-kimi-k2-6">
+                    <div class="font-semibold">Kimi K2.6</div>
+                    <div class="text-xs text-emerald-400">Uzun bağlam • Akıllı</div>
+                </div>
+                
+                <div onclick="selectModel('glm-5')" class="model-card cursor-pointer bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-2xl p-4 mb-3" id="model-glm-5">
+                    <div class="font-semibold">GLM 5</div>
+                    <div class="text-xs text-emerald-400">En yeni • En güçlü</div>
                 </div>
             </div>
 
-            <!-- Ayarlar -->
             <div class="p-4 border-t border-slate-800">
-                <button onclick="clearChat()" 
-                        class="w-full flex items-center justify-center gap-2 bg-slate-800 hover:bg-red-900/30 text-red-400 hover:text-red-300 py-2.5 rounded-2xl text-sm transition-colors">
+                <button onclick="clearChat()" class="w-full flex items-center justify-center gap-2 bg-slate-800 hover:bg-red-900/30 text-red-400 py-2.5 rounded-2xl text-sm transition-colors">
                     <i class="fas fa-trash-alt"></i>
                     <span>Sohbeti Temizle</span>
                 </button>
             </div>
         </div>
 
-        <!-- Ana Chat Alanı -->
+        <!-- Ana Chat -->
         <div class="flex-1 flex flex-col">
-            
-            <!-- Üst Bar -->
             <div class="h-16 border-b border-slate-800 bg-slate-900 flex items-center px-6 justify-between">
                 <div class="flex items-center gap-4">
-                    <div id="currentModel" class="font-semibold text-lg">DeepSeek V4 Pro</div>
+                    <div id="currentModel" class="font-semibold text-lg">GLM 4.7</div>
                     <div class="px-3 py-1 bg-emerald-500/10 text-emerald-400 text-xs rounded-full font-medium">Çevrimiçi</div>
                 </div>
-                
-                <div class="flex items-center gap-2 text-sm text-slate-400">
-                    <i class="fas fa-key"></i>
-                    <span>Fireworks API</span>
-                </div>
+                <div class="text-sm text-slate-400">SERRO-AI • Fireworks</div>
             </div>
 
-            <!-- Mesaj Alanı -->
-            <div id="chatBox" class="flex-1 overflow-y-auto p-6 chat-container space-y-6 bg-slate-950">
-                <!-- Mesajlar buraya gelecek -->
-            </div>
+            <div id="chatBox" class="flex-1 overflow-y-auto p-6 chat-container space-y-6 bg-slate-950"></div>
 
-            <!-- Input Alanı -->
             <div class="p-4 border-t border-slate-800 bg-slate-900">
                 <div class="flex items-center gap-3 max-w-4xl mx-auto">
-                    <div class="flex-1 relative">
-                        <input id="userInput" type="text" placeholder="Mesajını yaz..." 
-                               class="w-full bg-slate-800 border border-slate-700 focus:border-blue-500 rounded-3xl px-6 py-4 text-white placeholder-slate-500 focus:outline-none">
-                    </div>
-                    <button onclick="sendMessage()" 
-                            class="bg-blue-600 hover:bg-blue-700 transition-all active:scale-95 w-14 h-14 flex items-center justify-center rounded-3xl shadow-lg">
+                    <input id="userInput" type="text" placeholder="Mesajını yaz..." 
+                           class="flex-1 bg-slate-800 border border-slate-700 focus:border-indigo-500 rounded-3xl px-6 py-4 text-white placeholder-slate-500 focus:outline-none">
+                    <button onclick="sendMessage()" class="bg-indigo-600 hover:bg-indigo-700 w-14 h-14 flex items-center justify-center rounded-3xl shadow-lg transition-all active:scale-95">
                         <i class="fas fa-paper-plane text-white"></i>
                     </button>
                 </div>
-                <div class="text-center text-[10px] text-slate-500 mt-2">Enter tuşu ile gönder • Fireworks AI</div>
             </div>
         </div>
     </div>
 
     <script>
-        // API Key
         const API_KEY = "fw_Je5Mi4HAFxaKPr9b15GC9Y";
         
-        // Model haritası
         const models = {
-            "deepseek-v4-pro": "accounts/fireworks/models/deepseek-v4-pro",
             "glm-4p7": "accounts/fireworks/models/glm-4p7",
-            "qwen3-235b": "accounts/fireworks/models/qwen3-235b-a22b"
+            "qwen3-235b": "accounts/fireworks/models/qwen3-235b-a22b",
+            "kimi-k2-6": "accounts/fireworks/models/kimi-k2-6",
+            "glm-5": "accounts/fireworks/models/glm-5"
         };
         
-        let currentModel = "deepseek-v4-pro";
+        let currentModel = "glm-4p7";
         let chatHistory = [];
 
-        // Model seçimi
         function selectModel(modelKey) {
-            // Tüm kartları pasif yap
-            document.querySelectorAll('.model-card').forEach(el => el.classList.remove('active', 'border-blue-500'));
-            document.querySelectorAll('.model-card').forEach(el => el.classList.add('border-slate-700'));
+            document.querySelectorAll('.model-card').forEach(el => {
+                el.classList.remove('active', 'border-indigo-500');
+                el.classList.add('border-slate-700');
+            });
             
-            // Seçili kartı aktif yap
             const activeCard = document.getElementById(`model-${modelKey}`);
-            activeCard.classList.add('active', 'border-blue-500');
+            activeCard.classList.add('active', 'border-indigo-500');
             activeCard.classList.remove('border-slate-700');
             
             currentModel = modelKey;
             document.getElementById('currentModel').innerText = activeCard.querySelector('.font-semibold').innerText;
         }
 
-        // Mesaj ekleme
         function addMessage(content, isUser) {
             const chatBox = document.getElementById('chatBox');
             const messageDiv = document.createElement('div');
             messageDiv.className = `flex ${isUser ? 'justify-end' : 'justify-start'}`;
             
             if (isUser) {
-                messageDiv.innerHTML = `
-                    <div class="message user-bubble px-5 py-3.5 rounded-3xl rounded-br-none text-white">
-                        <p class="whitespace-pre-wrap">${content}</p>
-                    </div>
-                `;
+                messageDiv.innerHTML = `<div class="message user-bubble px-5 py-3.5 rounded-3xl rounded-br-none text-white"><p>${content}</p></div>`;
             } else {
                 messageDiv.innerHTML = `
-                    <div class="message ai-bubble px-5 py-3.5 rounded-3xl rounded-bl-none max-w-[75%]">
-                        <div class="flex items-center gap-2 mb-1">
-                            <span class="text-xs font-medium text-slate-400">AI</span>
-                        </div>
-                        <p class="whitespace-pre-wrap text-[15px]">${content}</p>
-                        
+                    <div class="message ai-bubble px-5 py-3.5 rounded-3xl rounded-bl-none max-w-[78%]">
+                        <p class="whitespace-pre-wrap">${content}</p>
                         <div class="flex justify-end mt-2">
-                            <button onclick="copyToClipboard(this)" class="text-slate-400 hover:text-white text-xs flex items-center gap-1 transition-colors">
-                                <i class="fas fa-copy"></i>
-                                <span>Kopyala</span>
+                            <button onclick="copyToClipboard(this)" class="text-slate-400 hover:text-white text-xs flex items-center gap-1">
+                                <i class="fas fa-copy"></i> <span>Kopyala</span>
                             </button>
                         </div>
-                    </div>
-                `;
+                    </div>`;
             }
-            
             chatBox.appendChild(messageDiv);
             chatBox.scrollTop = chatBox.scrollHeight;
-            
-            // Geçmişe kaydet
             chatHistory.push({ content, isUser });
             localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
         }
 
-        // Kopyala butonu
         function copyToClipboard(element) {
             const text = element.parentElement.parentElement.querySelector('p').innerText;
-            navigator.clipboard.writeText(text).then(() => {
-                const originalText = element.innerHTML;
-                element.innerHTML = `<i class="fas fa-check"></i> <span>Kopyalandı</span>`;
-                setTimeout(() => {
-                    element.innerHTML = originalText;
-                }, 1500);
-            });
+            navigator.clipboard.writeText(text);
+            const original = element.innerHTML;
+            element.innerHTML = `<i class="fas fa-check"></i> Kopyalandı`;
+            setTimeout(() => element.innerHTML = original, 1500);
         }
 
-        // Mesaj gönderme
         async function sendMessage() {
             const input = document.getElementById('userInput');
             if (!input.value.trim()) return;
@@ -235,30 +159,18 @@
             addMessage(message, true);
             input.value = '';
 
-            // Yazıyor animasyonu
             const chatBox = document.getElementById('chatBox');
-            const typingDiv = document.createElement('div');
-            typingDiv.id = 'typing';
-            typingDiv.className = 'flex justify-start';
-            typingDiv.innerHTML = `
-                <div class="message ai-bubble px-5 py-3 rounded-3xl">
-                    <div class="flex items-center gap-1">
-                        <div class="w-2 h-2 bg-slate-400 rounded-full animate-bounce"></div>
-                        <div class="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
-                        <div class="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style="animation-delay: 0.4s"></div>
-                    </div>
-                </div>
-            `;
-            chatBox.appendChild(typingDiv);
+            const typing = document.createElement('div');
+            typing.id = 'typing';
+            typing.className = 'flex justify-start';
+            typing.innerHTML = `<div class="message ai-bubble px-5 py-3 rounded-3xl"><div class="flex gap-1"><div class="w-2 h-2 bg-slate-400 rounded-full animate-bounce"></div><div class="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style="animation-delay:0.2s"></div><div class="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style="animation-delay:0.4s"></div></div></div>`;
+            chatBox.appendChild(typing);
             chatBox.scrollTop = chatBox.scrollHeight;
 
             try {
                 const response = await fetch("https://api.fireworks.ai/inference/v1/chat/completions", {
                     method: "POST",
-                    headers: {
-                        "Authorization": `Bearer ${API_KEY}`,
-                        "Content-Type": "application/json"
-                    },
+                    headers: { "Authorization": `Bearer ${API_KEY}`, "Content-Type": "application/json" },
                     body: JSON.stringify({
                         model: models[currentModel],
                         messages: [{ role: "user", content: message }],
@@ -269,64 +181,44 @@
 
                 const data = await response.json();
                 document.getElementById('typing').remove();
-                
-                const aiReply = data.choices[0].message.content;
-                addMessage(aiReply, false);
-
-            } catch (error) {
+                addMessage(data.choices[0].message.content, false);
+            } catch (e) {
                 document.getElementById('typing').remove();
                 addMessage("Bir hata oluştu. Lütfen tekrar deneyin.", false);
             }
         }
 
-        // Sohbeti temizle
         function clearChat() {
-            if (confirm("Sohbet geçmişini silmek istediğine emin misin?")) {
+            if (confirm("Sohbeti temizlemek istiyor musun?")) {
                 document.getElementById('chatBox').innerHTML = '';
                 chatHistory = [];
                 localStorage.removeItem('chatHistory');
-                
-                // Hoş geldin mesajı
-                setTimeout(() => {
-                    addMessage("Merhaba! Bugün sana nasıl yardımcı olabilirim?", false);
-                }, 300);
             }
         }
 
-        // Enter tuşu
-        document.getElementById('userInput').addEventListener('keypress', function(e) {
+        document.getElementById('userInput').addEventListener('keypress', e => {
             if (e.key === 'Enter') sendMessage();
         });
 
-        // Sayfa yüklendiğinde
         window.onload = function() {
-            // Önceki sohbeti yükle
-            const savedHistory = localStorage.getItem('chatHistory');
-            if (savedHistory) {
-                chatHistory = JSON.parse(savedHistory);
+            const saved = localStorage.getItem('chatHistory');
+            if (saved) {
+                chatHistory = JSON.parse(saved);
                 const chatBox = document.getElementById('chatBox');
-                
                 chatHistory.forEach(msg => {
                     const div = document.createElement('div');
                     div.className = `flex ${msg.isUser ? 'justify-end' : 'justify-start'}`;
-                    
-                    if (msg.isUser) {
-                        div.innerHTML = `<div class="message user-bubble px-5 py-3.5 rounded-3xl rounded-br-none">${msg.content}</div>`;
-                    } else {
-                        div.innerHTML = `<div class="message ai-bubble px-5 py-3.5 rounded-3xl rounded-bl-none max-w-[75%]">${msg.content}</div>`;
-                    }
+                    div.innerHTML = msg.isUser ? 
+                        `<div class="message user-bubble px-5 py-3.5 rounded-3xl rounded-br-none">${msg.content}</div>` :
+                        `<div class="message ai-bubble px-5 py-3.5 rounded-3xl rounded-bl-none">${msg.content}</div>`;
                     chatBox.appendChild(div);
                 });
             } else {
-                // İlk mesaj
-                setTimeout(() => {
-                    addMessage("Merhaba! DeepSeek V4 Pro veya GLM 4.7 ile sohbet edebilirsin. Sol taraftan model değiştirebilirsin.", false);
-                }, 500);
+                setTimeout(() => addMessage("Merhaba! SERRO-AI'ye hoş geldin. Sol taraftan model seçebilirsin.", false), 600);
             }
             
-            // Varsayılan modeli aktif yap
-            document.getElementById('model-deepseek-v4-pro').classList.add('active', 'border-blue-500');
-            document.getElementById('currentModel').innerText = "DeepSeek V4 Pro";
+            document.getElementById('model-glm-4p7').classList.add('active', 'border-indigo-500');
+            document.getElementById('currentModel').innerText = "GLM 4.7";
         }
     </script>
 </body>
